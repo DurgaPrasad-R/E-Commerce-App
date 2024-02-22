@@ -1,5 +1,5 @@
 import logo from "../Assets/logo.png";
-import cart_icon from "../Assets/cart_icon.png";
+import Cart from "./Cart";
 import { useState } from "react";
 const NavBar = () => {
   const [menu, setMenu] = useState("shop");
@@ -59,15 +59,7 @@ const NavBar = () => {
         <button className="w-36 h-14 outline-none border rounded-3xl font-medium cursor-pointer text-orange-500 bg-white active:bg-slate-100">
           Login
         </button>
-        <div className="relative">
-          <img src={cart_icon} alt="cart" className="w-8 h-8" />
-
-          <sup className="absolute top--1 right-[-0.5rem]">
-            <div className="w-5 h-5 flex justify-center items-center bg-red-500 text-white rounded-full">
-              0
-            </div>
-          </sup>
-        </div>
+        <Cart />
       </div>
     </div>
   );
