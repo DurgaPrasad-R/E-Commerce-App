@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const NavItems = ({ menu, setMenu }) => {
   return (
     <ul className="flex items-center list-none gap-12 text-gray-500 font-medium">
@@ -7,7 +9,7 @@ const NavItems = ({ menu, setMenu }) => {
         }}
         className="flex flex-col gap-1 items-center justify-center cursor-pointer"
       >
-        Shop
+        <Link to="/"> Shop</Link>
         {menu === "shop" && (
           <hr className="border-none bg-red-400 w-3/4 rounded-lg h-1" />
         )}
@@ -18,7 +20,7 @@ const NavItems = ({ menu, setMenu }) => {
         }}
         className="flex flex-col gap-1 items-center justify-center cursor-pointer"
       >
-        Men
+        <Link to="/men">Men</Link>
         {menu === "men" && (
           <hr className="border-none bg-red-400 w-3/4 rounded-lg h-1" />
         )}
@@ -29,7 +31,7 @@ const NavItems = ({ menu, setMenu }) => {
         }}
         className="flex flex-col gap-1 items-center justify-center cursor-pointer"
       >
-        Women
+        <Link to="/women">Women</Link>
         {menu === "women" && (
           <hr className="border-none bg-red-400 w-3/4 rounded-lg h-1" />
         )}
@@ -40,7 +42,7 @@ const NavItems = ({ menu, setMenu }) => {
           setMenu("kids");
         }}
       >
-        Kids
+        <Link to="/kids">Kids</Link>
         {menu === "kids" && (
           <hr className="border-none bg-red-400 w-3/4 rounded-lg h-1" />
         )}
