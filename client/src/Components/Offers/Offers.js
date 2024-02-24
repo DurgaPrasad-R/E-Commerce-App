@@ -1,7 +1,7 @@
 import exclusive_image from "../Assets/exclusive_image.png";
 const Offers = () => {
   return (
-    <div className="flex m-auto h-[60vh] w-[65%] items-center justify-center bg-gradient-to-b from-purple-100 to-white p-8 font-pops gap-20">
+    <div className="flex mt-20 m-auto h-[60vh] w-[65%] items-center justify-center bg-gradient-to-b from-purple-100 to-white p-8 font-pops gap-20">
       <div className="text-left max-w-md">
         <h1 className="text-4xl font-bold">Exclusive</h1>
         <h1 className="text-4xl font-bold">Offers For You</h1>
