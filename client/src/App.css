@@ -5,3 +5,9 @@
 * {
     margin: 0;
 }
+
+@layer base {
+    .custom-grid-templates {
+        grid-template-columns: 0.5fr 2fr 1fr 1fr 1fr 1fr;
+    }
+}

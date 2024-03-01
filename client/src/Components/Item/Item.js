@@ -3,7 +3,7 @@ const Item = ({ image, name, new_price, old_price, id }) => {
   return (
     <div className="w-60 hover:scale-105 duration-[600ms] font-pops">
       <Link to={`/product/${id}`}>
-        <img src={image} alt="product-pic" />
+        <img src={image} alt="product-pic" onClick={window.scrollTo(0, 0)} />
       </Link>
       <p className="mt-1 mb-1">{name}</p>
       <div className="flex gap-5">
