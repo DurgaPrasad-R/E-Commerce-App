@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { ShopContext } from "../../Context/ShopContext";
 import remove_icon from "../Assets/cart_cross_icon.png";
 const CartItems = () => {
-  const { cart, all_product, addToCart, removeFromCart, getTotal } =
+  const { cart, all_product, removeFromCart, getTotal } =
     useContext(ShopContext);
   return (
     <div className="mx-40 my-24 font-pops">

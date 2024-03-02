@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const NavItems = ({ menu, setMenu }) => {
   return (
-    <ul className="flex items-center list-none gap-12 text-gray-500 font-medium">
+    <ul className="md:text-base flex items-center list-none gap-12 text-gray-500 font-medium">
       <li
         onClick={() => {
           setMenu("shop");

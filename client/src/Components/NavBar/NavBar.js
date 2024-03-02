@@ -6,7 +6,7 @@ import { useState } from "react";
 const NavBar = () => {
   const [menu, setMenu] = useState("shop");
   return (
-    <div className="flex justify-around p-4 shadow font-pops">
+    <div className="flex justify-around py-3 px-7 shadow font-pops">
       <Logo />
       <NavItems menu={menu} setMenu={setMenu} />
       <Login />
