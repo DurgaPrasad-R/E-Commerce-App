@@ -130,6 +130,76 @@ app.get("/products", async (req, res) => {
   }
 });
 
+// creating schema for users
+const Users = mongoose.model("Users", {
+  username: {
+    type: String,
+  },
+  email: {
+    type: String,
+    unique: true,
+  },
+  password: {
+    type: String,
+  },
+  cartData: {
+    type: Object,
+  },
+  date: {
+    type: Date,
+    default: Date.now,
+  },
+});
+
+// to register a user
+app.post("/signup", async (req, res) => {
+  let check = await Users.findOne({ email: req.body.email });
+  if (check) {
+    return res.json({ message: "User already exists", success: false });
+  }
+  // empty cart initializing for all the items..
+  let cart = {};
+  for (let i = 0; i < 300; i++) {
+    cart[i] = 0;
+  }
+  const user = new Users({
+    username: req.body.username,
+    email: req.body.email,
+    cartData: cart,
+    password: req.body.password,
+  });
+  try {
+    await user.save();
+    const data = {
+      user: {
+        id: user.id,
+      },
+    };
+    const token = jwt.sign(data, "secret_ecom");
+    res.json({ token, success: true });
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
+// to login a user
+app.post("/login", async (req, res) => {
+  console.log(req.body.email, req.body.password);
+  let user = await Users.findOne({ email: req.body.email });
+  if (!user) {
+    return res.json({ message: "User does not exist", success: false });
+  }
+  if (user.password !== req.body.password) {
+    return res.json({ message: "Invalid credentials", success: false });
+  }
+  const data = {
+    user: {
+      id: user.id,
+    },
+  };
+  const token = jwt.sign(data, "secret_ecom");
+  res.json({ token, success: true });
+});
 
 app.listen(PORT, (error) => {
   if (error) return console.log(`Error: ${error}`);
