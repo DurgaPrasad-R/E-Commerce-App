@@ -93,7 +93,6 @@ app.post("/addproduct", async (req, res) => {
     new_price: req.body.new_price,
     old_price: req.body.old_price,
   });
-  console.log(product);
   try {
     await product.save();
     console.log("Product added successfully");
@@ -127,6 +126,18 @@ app.get("/products", async (req, res) => {
     res.send(products);
   } catch (error) {
     res.status(500).send(error);
+  }
+});
+
+// to fetch new collections
+app.get("/newcollections", async (req, res) => {
+  try {
+    let products = await Product.find({ available: true });
+    let newcollections = products.slice(1).slice(-8);
+    console.log("Fetched new collections");
+    res.send(newcollections);
+  } catch (error) {
+    res.status.send(error);
   }
 });
 
