@@ -8,7 +8,13 @@ const multer = require("multer");
 const path = require("path");
 
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: ["https://e-commerce-app-beta-rust.vercel.app"],
+    methods: ["GET", "POST"],
+    credentials: true,
+  })
+);
 
 // Connect to MongoDB
 mongoose.connect(
