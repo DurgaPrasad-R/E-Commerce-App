@@ -48,6 +48,7 @@ const CartItems = () => {
           <div>
             <div className="flex justify-between px-0 py-4">
               <p>Subtotal</p>
+              {console.log(getTotal())}
               <p>${getTotal()}</p>
             </div>
             <hr className="h-1 bg-gray-300 border-0" />
@@ -58,6 +59,7 @@ const CartItems = () => {
             <hr className="h-1 bg-gray-300 border-0" />
             <div className="flex justify-between px-0 py-4">
               <h3>Total</h3>
+              {console.log(getTotal())}
               <p>${getTotal()}</p>
             </div>
           </div>

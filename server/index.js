@@ -141,6 +141,71 @@ app.get("/newcollections", async (req, res) => {
   }
 });
 
+// to fetch popular in women
+app.get("/popularinwomen", async (req, res) => {
+  try {
+    let products = await Product.find({ category: "women", available: true });
+    let popularinwomen = products.slice(0, 4);
+    console.log("Fetched popular in women");
+    res.send(popularinwomen);
+  } catch (error) {
+    res.status.send(error);
+  }
+});
+
+// creating middleware to fetch user
+const fetchuser = async (req, res, next) => {
+  const token = req.header("auth-token");
+  if (!token) {
+    res.status(401).send({ message: "No token found" });
+  }
+  try {
+    const data = jwt.verify(token, "secret_ecom");
+    req.user = data.user;
+    next();
+  } catch (error) {
+    res.status(401).send({ message: "Invalid token" });
+  }
+};
+
+// to add products in cart
+app.post("/addtocart", fetchuser, async (req, res) => {
+  try {
+    let user = await Users.findById(req.user.id);
+    user.cartData[req.body.id] += 1;
+    await Users.updateOne({ _id: req.user.id }, { cartData: user.cartData });
+    console.log("Added", req.body.id);
+    res.json({ message: "Added to cart", success: true });
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
+// to remove products from cart
+app.post("/removefromcart", fetchuser, async (req, res) => {
+  try {
+    let user = await Users.findById(req.user.id);
+    if (user.cartData[req.body.id] > 0) {
+      user.cartData[req.body.id] -= 1;
+      await Users.updateOne({ _id: req.user.id }, { cartData: user.cartData });
+      console.log("Removed", req.body.id);
+      res.json({ message: "Removed from cart", success: true });
+    }
+  } catch (error) {
+    res.status.send(error);
+  }
+});
+
+// to display cart items
+app.post("/getcart", fetchuser, async (req, res) => {
+  try {
+    let user = await Users.findById(req.user.id);
+    res.json(user.cartData);
+  } catch (error) {
+    res.status.send(error);
+  }
+});
+
 // creating schema for users
 const Users = mongoose.model("Users", {
   username: {
