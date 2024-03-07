@@ -8,6 +8,25 @@ const LoginSignup = () => {
   });
   const login = async () => {
     console.log(formData);
+    let responseDate;
+    await fetch("http://localhost:4000/login", {
+      method: "POST",
+      headers: {
+        Accept: "application/form-data",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        responseDate = data;
+      });
+    if (responseDate.success) {
+      localStorage.setItem("auth-token", responseDate.token);
+      window.location.replace("/");
+    } else {
+      alert(responseDate.message);
+    }
   };
   const signup = async () => {
     console.log(formData);

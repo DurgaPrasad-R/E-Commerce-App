@@ -184,7 +184,6 @@ app.post("/signup", async (req, res) => {
 
 // to login a user
 app.post("/login", async (req, res) => {
-  console.log(req.body.email, req.body.password);
   let user = await Users.findOne({ email: req.body.email });
   if (!user) {
     return res.json({ message: "User does not exist", success: false });
