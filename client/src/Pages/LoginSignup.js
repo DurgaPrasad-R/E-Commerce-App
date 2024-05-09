@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 const LoginSignup = () => {
   const [state, setState] = useState("Login");
+  const apiUrl = process.env.REACT_APP_BACKEND;
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -9,7 +10,7 @@ const LoginSignup = () => {
   const login = async () => {
     console.log(formData);
     let responseDate;
-    await fetch("http://localhost:4000/login", {
+    await fetch(apiUrl + "/login", {
       method: "POST",
       headers: {
         Accept: "application/form-data",
@@ -31,7 +32,7 @@ const LoginSignup = () => {
   const signup = async () => {
     console.log(formData);
     let responseDate;
-    await fetch("http://localhost:4000/signup", {
+    await fetch(apiUrl + "/signup", {
       method: "POST",
       headers: {
         Accept: "application/form-data",

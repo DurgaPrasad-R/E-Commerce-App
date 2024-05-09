@@ -2,8 +2,9 @@ import Item from "../Item/Item";
 import React, { useState, useEffect } from "react";
 const Popular = () => {
   const [popular, setPopular] = useState([]);
+  const apiUrl = process.env.REACT_APP_BACKEND;
   useEffect(() => {
-    fetch("http://localhost:4000/popularinwomen")
+    fetch(apiUrl + "/popularinwomen")
       .then((res) => res.json())
       .then((data) => setPopular(data));
   }, []);

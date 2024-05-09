@@ -2,8 +2,9 @@ import React, { useEffect } from "react";
 import Item from "../Item/Item";
 const RelatedProducts = () => {
   const [products, setProducts] = React.useState([]);
+  const apiUrl = process.env.REACT_APP_BACKEND;
   useEffect(() => {
-    fetch("http://localhost:4000/popularinwomen").then((res) => {
+    fetch(apiUrl + "/popularinwomen").then((res) => {
       res.json().then((data) => {
         setProducts(data);
       });

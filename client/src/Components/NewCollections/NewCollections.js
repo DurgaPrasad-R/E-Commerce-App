@@ -2,8 +2,9 @@ import Item from "../Item/Item";
 import React, { useEffect, useState } from "react";
 const NewCollections = () => {
   const [new_collection, setNew_collection] = useState([]);
+  const apiUrl = process.env.REACT_APP_BACKEND;
   useEffect(() => {
-    fetch("http://localhost:4000/newcollections")
+    fetch(apiUrl + "/newcollections")
       .then((res) => res.json())
       .then((data) => setNew_collection(data));
   }, []);
