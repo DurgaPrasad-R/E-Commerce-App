@@ -1,4 +1,3 @@
-import React from "react";
 import "./AddProduct.css";
 import upload_area from "../../assets/upload_area.svg";
 import { useState } from "react";
