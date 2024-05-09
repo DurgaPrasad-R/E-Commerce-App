@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import cross_icon from "../../assets/cross_icon.png";
 const ListProduct = () => {
   const [allProducts, setAllProducts] = useState([]);
-  const apiUrl = process.env.REACT_APP_BACKEND;
+  const apiUrl = process.env.VITE_APP_BACKEND;
 
   const fetchInfo = async () => {
     await fetch(apiUrl + "/products")

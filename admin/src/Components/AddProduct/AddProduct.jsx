@@ -4,7 +4,7 @@ import { useState } from "react";
 import process from "process";
 const AddProduct = () => {
   const [image, setImage] = useState(false);
-  const apiUrl = process.env.REACT_APP_BACKEND;
+  const apiUrl = process.env.VITE_APP_BACKEND;
   const [productDetails, setProductDetails] = useState({
     name: "",
     image: "",
