@@ -37,7 +37,7 @@ app.use("/images", express.static(path.join(__dirname, "uploads/images")));
 app.post("/upload", upload.single("product"), (req, res) => {
   res.json({
     success: 1,
-    image_url: `${process.env.REACT_APP_BACKEND}/images/${req.file.filename}`,
+    image_url: `https://e-commerce-app-sqbo.onrender.com/images/${req.file.filename}`,
   });
 });
 
