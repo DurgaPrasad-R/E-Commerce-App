@@ -4,7 +4,6 @@ import { useState } from "react";
 import process from "process";
 const AddProduct = () => {
   const [image, setImage] = useState(false);
-  const apiUrl = process.env.VITE_APP_BACKEND;
   const [productDetails, setProductDetails] = useState({
     name: "",
     image: "",
@@ -25,7 +24,7 @@ const AddProduct = () => {
     let formData = new FormData();
     formData.append("product", image);
 
-    await fetch(apiUrl + "/upload", {
+    await fetch("https://e-commerce-app-sqbo.onrender.com/upload", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -38,7 +37,7 @@ const AddProduct = () => {
       });
     if (responseData.success) {
       product.image = responseData.image_url;
-      await fetch(apiUrl + "/addproduct", {
+      await fetch("https://e-commerce-app-sqbo.onrender.com/addproduct", {
         method: "POST",
         headers: {
           Accept: "application/json",

@@ -5,10 +5,9 @@ import { useEffect } from "react";
 import cross_icon from "../../assets/cross_icon.png";
 const ListProduct = () => {
   const [allProducts, setAllProducts] = useState([]);
-  const apiUrl = process.env.VITE_APP_BACKEND;
 
   const fetchInfo = async () => {
-    await fetch(apiUrl + "/products")
+    await fetch("https://e-commerce-app-sqbo.onrender.com/products")
       .then((res) => res.json())
       .then((data) => {
         setAllProducts(data);
@@ -19,7 +18,7 @@ const ListProduct = () => {
   }, []);
 
   const remove_product = async (id) => {
-    await fetch(apiUrl + "/removeproduct", {
+    await fetch("https://e-commerce-app-sqbo.onrender.com/removeproduct", {
       method: "POST",
       headers: {
         Accept: "application/json",
